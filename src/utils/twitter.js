@@ -41,7 +41,7 @@ async function retweetKeyword(id) {
   }
 }
 
-async function getNewTweetFrom(screen_name) {
+async function getLastTweetFrom(screen_name) {
   try {
     let data = await client.get('statuses/user_timeline', {
       screen_name: `${screen_name}`,
@@ -56,4 +56,4 @@ async function getNewTweetFrom(screen_name) {
   }
 }
 
-module.exports = { tweetMessage, getKeywordTweet, retweetKeyword, getNewTweetFrom }
+module.exports = { tweetMessage, getKeywordTweet, retweetKeyword, getLastTweetFrom }
