@@ -6,7 +6,7 @@ Also, I used it to learn more about API integrations and JS promises.
 
 ### What does it do?
 
-The bot twitter account (@CidCaloteiro) will automatically tweet a reply to **@naosalvo** (AKA **Cid**) containing one of the preset messages when he posts a new tweet.
+The bot twitter account (@CidBacanoso) will automatically tweet a reply to **@naosalvo** (AKA **Cid**) containing one of the preset messages when he posts a new tweet.
 
 (The messages and caracter of the bot are part of an inside joke with his followers)
 
