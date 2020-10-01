@@ -1,4 +1,5 @@
 const Twitter = require('twitter-lite')
+const db = require('../db')
 
 const client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
@@ -44,7 +45,7 @@ async function retweetKeyword(id) {
 async function getLastTweetFrom(screen_name) {
   try {
     let data = await client.get('statuses/user_timeline', {
-      screen_name: `${screen_name}`,
+      screen_name: screen_name,
       count: 1,
       include_rts: false,
       exclude_replies: true
@@ -56,4 +57,17 @@ async function getLastTweetFrom(screen_name) {
   }
 }
 
-module.exports = { tweetMessage, getKeywordTweet, retweetKeyword, getLastTweetFrom }
+function addToHistory(tweetId) {
+  db.query(`INSERT INTO public.history (tweetid) VALUES (${tweetId})`, (err, res) => {
+    if (err) throw err
+    console.log(res)
+  })
+}
+
+async function searchHistory(tweetId) {
+  let foundHistory = await db.query(`SELECT * FROM public.history WHERE tweetid = '${tweetId}'`)
+    .then(res => res.rowCount)
+  return foundHistory
+}
+
+module.exports = { tweetMessage, getKeywordTweet, retweetKeyword, getLastTweetFrom, addToHistory, searchHistory }
