@@ -13,7 +13,7 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
 })
 
-let screen_name = 'CidBacanoso' //Twitter @ (username) of the account you want to reply to
+let screen_name = 'naosalvo' //Twitter @ (username) of the account you want to reply to
 
 app.post('/trigger', async (req, res) => {
   try {
